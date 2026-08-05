@@ -1,7 +1,24 @@
+"use client";
+
 import "../../ledger.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    
+    if (!email.includes("@")) {
+      alert("Por favor, insira um email válido com @");
+      return;
+    }
+    
+    router.push("/dashboard");
+  };
+
   return (
     <main className="bolso-page bolso-page--plain">
       <div className="auth-shell">
@@ -24,7 +41,7 @@ export default function LoginPage() {
 
           <div className="auth-divider">ou</div>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="auth-field">
               <label className="bolso-label" htmlFor="email">
                 E-mail
@@ -37,8 +54,10 @@ export default function LoginPage() {
                 <input
                   className="auth-input"
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="voce@email.com"
+                  required
                 />
               </div>
             </div>
@@ -60,8 +79,10 @@ export default function LoginPage() {
                 <input
                   className="auth-input"
                   id="senha"
+                  name="senha"
                   type="password"
                   placeholder="••••••••"
+                  required
                 />
               </div>
             </div>

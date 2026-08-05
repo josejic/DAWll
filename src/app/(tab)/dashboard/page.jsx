@@ -51,7 +51,7 @@ function formatarMoeda(v) {
 export default function AdminDashboardPage() {
   return (
     <>
-      <h1 className="admin-page-title">Dashboard</h1>
+      <h1 className="admin-page-title">Início</h1>
       <p className="admin-page-subtitle">Visão geral da plataforma bolso</p>
 
       <div className="admin-stats-grid">
@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
               </svg>
             </div>
           </div>
-          <div className="admin-stat-value">R$ 15.550,00</div>
+          <div className="admin-stat-value">R$ 5,00</div>
           <div className="admin-stat-foot">todas as transações</div>
         </div>
 
@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
               </svg>
             </div>
           </div>
-          <div className="admin-stat-value">R$ 2.985,50</div>
+          <div className="admin-stat-value">R$ 1,50</div>
           <div className="admin-stat-foot">todas as transações</div>
         </div>
 
