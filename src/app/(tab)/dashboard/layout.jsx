@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Search, Bell } from "lucide-react";
+import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Search, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import "../../ledger.css";
 
 const navItems = [
@@ -17,16 +18,26 @@ const navItems = [
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
-    <div className="admin-layout">
+    <div className={clsx("admin-layout", { "admin-layout--sidebar-collapsed": isSidebarCollapsed })}>
       <aside className="admin-sidebar">
         <div className="admin-sidebar-brand">
           <div className="admin-sidebar-mark">E</div>
-          <div>
+          <div className="admin-sidebar-brand-copy">
             <div className="admin-sidebar-brand-name">EduFinance</div>
             <div className="admin-sidebar-brand-sub">Painel Administrativo</div>
           </div>
+          <button
+            type="button"
+            className="admin-sidebar-toggle"
+            onClick={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
+            aria-label={isSidebarCollapsed ? "Expandir menu" : "Recolher menu"}
+            title={isSidebarCollapsed ? "Expandir menu" : "Recolher menu"}
+          >
+            {isSidebarCollapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
+          </button>
         </div>
 
         <nav className="admin-nav">
@@ -37,17 +48,18 @@ export default function AdminLayout({ children }) {
               className={clsx("admin-nav-item", {
                 "admin-nav-item--active": pathname === item.href,
               })}
+              title={isSidebarCollapsed ? item.label : undefined}
             >
               <item.Icon size={17} />
-              {item.label}
+              <span className="admin-nav-label">{item.label}</span>
             </Link>
           ))}
         </nav>
 
         <div className="admin-nav-exit">
-          <Link href="/login" className="admin-nav-item">
+          <Link href="/login" className="admin-nav-item" title={isSidebarCollapsed ? "Sair" : undefined}>
             <LogOut size={17} />
-            Sair
+            <span className="admin-nav-label">Sair</span>
           </Link>
         </div>
       </aside>
