@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Search, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import "../../ledger.css";
 
 const navItems = [
@@ -20,11 +20,29 @@ export default function AdminLayout({ children }) {
   const pathname = usePathname();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+  useEffect(() => {
+    const aplicarTemaSalvo = () => {
+      const modoEscuroAtivo = localStorage.getItem("admin-dark-mode") === "true";
+      document.body.classList.toggle("admin-dark-mode", modoEscuroAtivo);
+    };
+
+    aplicarTemaSalvo();
+    window.addEventListener("admin-dark-mode-change", aplicarTemaSalvo);
+
+    return () => window.removeEventListener("admin-dark-mode-change", aplicarTemaSalvo);
+  }, []);
+
   return (
     <div className={clsx("admin-layout", { "admin-layout--sidebar-collapsed": isSidebarCollapsed })}>
       <aside className="admin-sidebar">
         <div className="admin-sidebar-brand">
-          <div className="admin-sidebar-mark">E</div>
+          <img
+            className="admin-sidebar-mark"
+            src="/imagens/logo-simbolo.png"
+            alt="Logo da EduFinance"
+            width={36}
+            height={36}
+          />
           <div className="admin-sidebar-brand-copy">
             <div className="admin-sidebar-brand-name">EduFinance</div>
             <div className="admin-sidebar-brand-sub">Painel Administrativo</div>
@@ -66,11 +84,6 @@ export default function AdminLayout({ children }) {
 
       <div className="admin-main">
         <header className="admin-topbar">
-          <div className="admin-search">
-            <Search size={15} />
-            <input type="text" placeholder="Buscar usuários, transações..." />
-          </div>
-
           <div className="admin-topbar-right">
             <Bell size={19} />
             <div className="admin-user">

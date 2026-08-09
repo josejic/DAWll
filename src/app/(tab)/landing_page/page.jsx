@@ -68,7 +68,13 @@ export default function LandingPage() {
     <main className="landing-page">
       <header className="landing-header">
         <div className="landing-brand">
-          <div className="landing-brand-mark">E</div>
+          <img
+            className="landing-brand-mark"
+            src="/imagens/logo-simbolo.png"
+            alt="Logo da EduFinance"
+            width={40}
+            height={40}
+          />
           <span className="landing-brand-name">EduFinance</span>
         </div>
         <Link href="/login" className="landing-header-btn">
@@ -137,7 +143,13 @@ export default function LandingPage() {
 
       <footer className="landing-footer">
         <div className="landing-brand">
-          <div className="landing-brand-mark">E</div>
+          <img
+            className="landing-brand-mark"
+            src="/imagens/logo-simbolo.png"
+            alt="Logo da EduFinance"
+            width={40}
+            height={40}
+          />
           <span className="landing-brand-name">EduFinance</span>
         </div>
         <span>Painel financeiro · 2026</span>

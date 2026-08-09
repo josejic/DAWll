@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { transacoes } from "../transacoes-data.js";
 import {
   ArrowUpRight,
   ArrowDownRight,
@@ -11,19 +12,6 @@ import {
   Eye,
   Trash2,
 } from "lucide-react";
-
-const transacoes = [
-  { desc: "Supermercado", categoria: "Alimentação", valor: -320.5, data: "07/01/2025" },
-  { desc: "Curso de finanças", categoria: "Educação", valor: -450, data: "14/01/2025" },
-  { desc: "Salário + bônus", categoria: "Salário", valor: 5200, data: "04/03/2025" },
-  { desc: "Salário mensal", categoria: "Salário", valor: 4500, data: "04/01/2025" },
-  { desc: "Rendimento CDI", categoria: "Investimento", valor: 1200, data: "09/01/2025" },
-  { desc: "Salário", categoria: "Salário", valor: 3800, data: "04/02/2025" },
-  { desc: "Dividendos", categoria: "Investimento", valor: 850, data: "09/02/2025" },
-  { desc: "Aluguel", categoria: "Moradia", valor: -1500, data: "31/01/2025" },
-  { desc: "Cinema e restaurante", categoria: "Lazer", valor: -150, data: "28/02/2025" },
-  { desc: "Combustível", categoria: "Transporte", valor: -180, data: "11/01/2025" },
-];
 
 const totalReceitas = transacoes.filter((t) => t.valor > 0).reduce((s, t) => s + t.valor, 0);
 const totalDespesas = transacoes.filter((t) => t.valor < 0).reduce((s, t) => s + Math.abs(t.valor), 0);

@@ -1,21 +1,7 @@
 "use client";
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-
-const movimentacoes = [
-  { mes: "Jan", receitas: 2400, despesas: 1800 },
-  { mes: "Fev", receitas: 3800, despesas: 1400 },
-  { mes: "Mar", receitas: 5200, despesas: 1000 },
-  { mes: "Abr", receitas: 4900, despesas: 300 },
-  { mes: "Mai", receitas: 4200, despesas: 250 },
-  { mes: "Jun", receitas: 4600, despesas: 200 },
-  { mes: "Jul", receitas: 4300, despesas: 180 },
-  { mes: "Ago", receitas: 4700, despesas: 150 },
-  { mes: "Set", receitas: 4400, despesas: 170 },
-  { mes: "Out", receitas: 4900, despesas: 160 },
-  { mes: "Nov", receitas: 5100, despesas: 190 },
-  { mes: "Dez", receitas: 5300, despesas: 200 },
-];
+import { movimentacoesMensais } from "./transacoes-data.js";
 
 const metas = [
   { nome: "Fundo de Emergência", usuario: "Maria Silva", atual: 8500, alvo: 15000, status: "progresso" },
@@ -115,7 +101,7 @@ export default function AdminDashboardPage() {
           <h3 className="admin-card-title">Movimentações</h3>
           <p className="admin-card-subtitle">Receitas vs Despesas</p>
           <ResponsiveContainer width="100%" height={260}>
-            <LineChart data={movimentacoes}>
+            <LineChart data={movimentacoesMensais}>
               <CartesianGrid stroke="#EEF1EC" vertical={false} />
               <XAxis dataKey="mes" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
