@@ -8,7 +8,7 @@
   --ballpoint: #2C5F8A;
   --ballpoint-dark: #1F4666;
   --stamp-red: #B23A48;
-  --stamp-green: #3C7A5C;
+  --stamp-green: #7dc1a8;
   --highlight: #E8B84B;
   --card: #F7F8F3;
   --paper-plain: #F4F6F3;
@@ -281,7 +281,7 @@
   margin-top: 6px;
   transition: background 0.15s ease;
 }
-.auth-btn:hover { background: #2E6047; }
+.auth-btn:hover { background: #7dc1a8; }
 
 /* Landing page (antes do login) */
 .landing-page {
@@ -330,7 +330,7 @@
 }
 
 .landing-header-btn:hover {
-  background: #2c7b47;
+  background: #7dc1a8;
 }
 
 .landing-hero {
@@ -382,7 +382,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-.landing-cta-btn:hover { background: #2E6047; }
+.landing-cta-btn:hover { background: #7dc1a8; }
 
 .landing-stats {
   display: flex;
@@ -474,7 +474,7 @@
   padding: 48px 24px;
   border-radius: 16px;
   background: var(--stamp-green);
-  color: #fff;
+  color: #000;
   text-align: center;
 }
 
@@ -520,7 +520,7 @@
   width: 240px;
   flex-shrink: 0;
   position: relative;
-  background: #1E362B;
+  background: #7dc1a8;
   color: #B9C7BE;
   padding: 20px 14px;
   display: flex;
@@ -556,7 +556,7 @@
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  color: #B9C7BE;
+  color: #555;
   transition: all 0.2s ease-in-out;
   position: relative;
 }
@@ -1084,7 +1084,7 @@
   font-size: 13.5px;
   cursor: pointer;
 }
-.admin-btn-primary:hover { background: #2E6047; }
+.admin-btn-primary:hover { background: #7dc1a8; }
 
 .admin-tx-stats {
   display: grid;
@@ -1302,7 +1302,7 @@
   cursor: pointer;
 }
 .admin-tab--active {
-  background: #1E362B;
+  background: #7dc1a8;
   color: #fff;
   font-weight: 600;
 }

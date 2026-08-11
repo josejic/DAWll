@@ -102,11 +102,11 @@ export default function AdminDashboardPage() {
           <p className="admin-card-subtitle">Receitas vs Despesas</p>
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={movimentacoesMensais}>
-              <CartesianGrid stroke="#EEF1EC" vertical={false} />
+              <CartesianGrid stroke="#7dc1a8" vertical={false} />
               <XAxis dataKey="mes" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip />
-              <Line type="monotone" dataKey="receitas" stroke="#3C7A5C" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="receitas" stroke="#7dc1a8" strokeWidth={2} dot={false} />
               <Line type="monotone" dataKey="despesas" stroke="#B23A48" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
