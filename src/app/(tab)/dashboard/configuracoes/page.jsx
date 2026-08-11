@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   Settings,
   Mail,
@@ -19,6 +20,7 @@ import {
   Lock,
   Camera,
 } from "lucide-react";
+import { usePerfil } from "../perfil-context";
 
 // Paleta alinhada com a identidade EduFinance
 const COLORS = {
@@ -52,6 +54,7 @@ function SectionLabel({ children }) {
 }
 
 export default function AdminConfigPage() {
+  const { perfil: perfilAtual, atualizarPerfil } = usePerfil();
   const [darkMode, setDarkMode] = useState(
     () => typeof window !== "undefined" && localStorage.getItem("admin-dark-mode") === "true"
   );
@@ -61,11 +64,7 @@ export default function AdminConfigPage() {
     window.dispatchEvent(new Event("admin-dark-mode-change"));
   }, [darkMode]);
 
-  const [perfil, setPerfil] = useState({
-    nome: "Admin EduFinance",
-    email: "admin@edufinance.com",
-    foto: "",
-  });
+  const [perfil, setPerfil] = useState(perfilAtual);
   const [senha, setSenha] = useState({ atual: "", nova: "", confirmar: "" });
   const [perfilSalvo, setPerfilSalvo] = useState(true);
   const [erroSenha, setErroSenha] = useState("");
@@ -98,6 +97,11 @@ export default function AdminConfigPage() {
   const bg = darkMode ? COLORS.navy : "#f5f6f8";
   const textColor = darkMode ? "#f5f6f8" : COLORS.navy;
 
+  useEffect(() => {
+    const sincronizacao = window.setTimeout(() => setPerfil(perfilAtual), 0);
+    return () => window.clearTimeout(sincronizacao);
+  }, [perfilAtual]);
+
   function atualizarFaq(id, campo, valor) {
     setFaqs(faqs.map((f) => (f.id === id ? { ...f, [campo]: valor } : f)));
   }
@@ -115,9 +119,12 @@ export default function AdminConfigPage() {
   function alterarFoto(e) {
     const arquivo = e.target.files?.[0];
     if (!arquivo) return;
-    const url = URL.createObjectURL(arquivo);
-    setPerfil({ ...perfil, foto: url });
-    setPerfilSalvo(false);
+    const leitor = new FileReader();
+    leitor.onload = () => {
+      setPerfil((perfilAnterior) => ({ ...perfilAnterior, foto: leitor.result }));
+      setPerfilSalvo(false);
+    };
+    leitor.readAsDataURL(arquivo);
   }
 
   function salvarPerfil() {
@@ -136,6 +143,7 @@ export default function AdminConfigPage() {
       }
     }
     setErroSenha("");
+    atualizarPerfil(perfil);
     setSenha({ atual: "", nova: "", confirmar: "" });
     setPerfilSalvo(true);
   }
@@ -206,7 +214,7 @@ export default function AdminConfigPage() {
                 style={{ backgroundColor: COLORS.greenLight }}
               >
                 {perfil.foto ? (
-                  <img src={perfil.foto} alt="Foto do admin" className="w-full h-full object-cover" />
+                  <Image src={perfil.foto} alt="Foto do admin" width={64} height={64} unoptimized className="w-full h-full object-cover" />
                 ) : (
                   <User size={26} color={COLORS.green} />
                 )}

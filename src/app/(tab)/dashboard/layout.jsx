@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import "../../ledger.css";
+import { PerfilProvider, usePerfil } from "./perfil-context";
 
 const navItems = [
   { href: "/dashboard", label: "Dados", Icon: LayoutGrid },
@@ -16,9 +18,26 @@ const navItems = [
   { href: "/dashboard/configuracoes", label: "Configurações", Icon: Settings },
 ];
 
+function iniciais(nome) {
+  return (nome || "Administrador")
+    .split(" ")
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+}
 export default function AdminLayout({ children }) {
+  return (
+    <PerfilProvider>
+      <AdminLayoutContent>{children}</AdminLayoutContent>
+    </PerfilProvider>
+  );
+}
+
+function AdminLayoutContent({ children }) {
   const pathname = usePathname();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const { perfil } = usePerfil();
 
   useEffect(() => {
     const aplicarTemaSalvo = () => {
@@ -87,10 +106,16 @@ export default function AdminLayout({ children }) {
           <div className="admin-topbar-right">
             <Bell size={19} />
             <div className="admin-user">
-              <div className="admin-user-avatar">JI</div>
+              <div className="admin-user-avatar">
+                {perfil.foto ? (
+                  <Image src={perfil.foto} alt="Foto do perfil" width={34} height={34} unoptimized />
+                ) : (
+                  iniciais(perfil.nome)
+                )}
+              </div>
               <div>
-                <div className="admin-user-name">José Isac</div>
-                <div className="admin-user-role">Administrador</div>
+                <div className="admin-user-name">{perfil.nome}</div>
+                <div className="admin-user-role">{perfil.role}</div>
               </div>
             </div>
           </div>

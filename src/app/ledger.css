@@ -633,7 +633,10 @@
   justify-content: center;
   font-weight: 600;
   font-size: 13px;
+  overflow: hidden;
 }
+
+.admin-user-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
 .admin-user-name { font-size: 13px; font-weight: 600; }
 .admin-user-role { font-size: 11px; color: var(--ink-soft); }
