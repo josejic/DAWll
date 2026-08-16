@@ -1,10 +1,10 @@
 "use client";
 
-import "../../ledger.css";
+import "../globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LockKeyhole, Mail } from "lucide-react";
-import GoogleIcon from "../../../components/GoogleIcon";
+import GoogleIcon from "../../components/GoogleIcon";
 
 export default function LoginPage() {
   const router = useRouter();

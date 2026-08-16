@@ -1,65 +1,45 @@
 import Link from "next/link";
-import "../../ledger.css";
+import { 
+  ArrowUpRight, 
+  Target, 
+  Grid, 
+  Lightbulb, 
+  BarChart3, 
+  ShieldCheck, 
+  ArrowRight 
+} from "lucide-react";
+import "../globals.css";
 
 const features = [
   {
     title: "Lançamentos",
     desc: "Registre receitas e despesas em segundos, com categorias pensadas pra rotina de estudante.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M7 17l5-5 5 5M7 7l5 5 5-5" />
-      </svg>
-    ),
+    icon: <ArrowUpRight size={20} />,
   },
   {
     title: "Metas de economia",
     desc: "Defina um objetivo (curso, viagem, emergência) e acompanhe o progresso mês a mês.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="9" />
-        <circle cx="12" cy="12" r="4" />
-      </svg>
-    ),
+    icon: <Target size={20} />,
   },
   {
     title: "Categorias personalizadas",
     desc: "Alimentação, transporte, estudo, lazer — organize os gastos do jeito que fizer sentido pra você.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="3" y="3" width="7" height="7" rx="1" />
-        <rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" />
-        <rect x="14" y="14" width="7" height="7" rx="1" />
-      </svg>
-    ),
+    icon: <Grid size={20} />,
   },
   {
     title: "Conteúdo educativo",
     desc: "Dicas curtas de educação financeira, direto no seu painel, sem precisar sair do app.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.5.5.8 1 .8 1.7V16h6.4v-.8c0-.7.3-1.2.8-1.7A6 6 0 0 0 12 3z" />
-      </svg>
-    ),
+    icon: <Lightbulb size={20} />,
   },
   {
     title: "Painel em tempo real",
     desc: "Saldo, entradas e saídas sempre atualizados, sem precisar recarregar nada.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M3 3v18h18" />
-        <path d="M7 15l4-4 3 3 5-6" />
-      </svg>
-    ),
+    icon: <BarChart3 size={20} />,
   },
   {
     title: "Acesso seguro",
     desc: "Login protegido, seus dados financeiros ficam só entre você e o painel.",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" />
-      </svg>
-    ),
+    icon: <ShieldCheck size={20} />,
   },
 ];
 
@@ -79,9 +59,7 @@ export default function LandingPage() {
         </div>
         <Link href="/login" className="landing-header-btn">
           Entrar
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
+          <ArrowRight size={16} />
         </Link>
       </header>
 
@@ -97,9 +75,7 @@ export default function LandingPage() {
         </p>
         <Link href="/login" className="landing-cta-btn">
           Acessar painel
-          <svg width="10" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
+          <ArrowRight size={18} />
         </Link>
       </section>
 
