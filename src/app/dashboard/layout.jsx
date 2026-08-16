@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { LayoutGrid, Users, ArrowRightLeft, Target, Lightbulb, Settings, LogOut, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import "../../ledger.css";
 import { PerfilProvider, usePerfil } from "./perfil-context";
 
 const navItems = [

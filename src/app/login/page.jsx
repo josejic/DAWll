@@ -1,6 +1,6 @@
 "use client";
 
-import "../globals.css";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LockKeyhole, Mail } from "lucide-react";
@@ -11,46 +11,44 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    
-    if (!email.includes("@")) {
-      alert("Por favor, insira um email válido com @");
-      return;
-    }
-    
+    // Redirecionamento direto, confiando na validação HTML5 dos inputs
     router.push("/dashboard");
   };
 
   return (
     <main className="bolso-page bolso-page--plain">
       <div className="auth-shell">
+        {/* CABEÇALHO */}
         <div className="auth-header">
-          <img
+          <Image
             className="auth-logo"
             src="/imagens/logo-simbolo.png"
             alt="Logo da EduFinance"
             width={64}
             height={64}
+            priority
           />
           <p className="auth-brand">EduFinance</p>
           <p className="auth-subtitle">Painel Administrativo</p>
         </div>
 
+        {/* CARTÃO DE AUTENTICAÇÃO */}
         <div className="auth-card">
           <button type="button" className="auth-google-btn">
-            <GoogleIcon />
+            <GoogleIcon size={18} />
             Continuar com Google
           </button>
 
           <div className="auth-divider">ou</div>
 
+          {/* FORMULÁRIO */}
           <form onSubmit={handleSubmit}>
             <div className="auth-field">
               <label className="bolso-label" htmlFor="email">
                 E-mail
               </label>
               <div className="auth-input-wrap">
-                <Mail size={16} strokeWidth={2} />
+                <Mail size={16} />
                 <input
                   className="auth-input"
                   id="email"
@@ -67,12 +65,12 @@ export default function LoginPage() {
                 <label className="bolso-label" htmlFor="senha">
                   Senha
                 </label>
-                <Link className="bolso-link" href="/recuperar-senha" style={{ fontSize: "12px" }}>
+                <Link className="bolso-link bolso-link--sm" href="/recuperar-senha">
                   Esqueceu a senha?
                 </Link>
               </div>
               <div className="auth-input-wrap">
-                <LockKeyhole size={16} strokeWidth={2} />
+                <LockKeyhole size={16} />
                 <input
                   className="auth-input"
                   id="senha"
@@ -90,9 +88,13 @@ export default function LoginPage() {
           </form>
         </div>
 
+        {/* RODAPÉ */}
         <p className="bolso-footnote">
-  Ainda não tem conta? <Link className="bolso-link" href="/cadastro">Criar conta</Link>
-</p>
+          Ainda não tem conta?{" "}
+          <Link className="bolso-link" href="/cadastro">
+            Criar conta
+          </Link>
+        </p>
       </div>
     </main>
   );
