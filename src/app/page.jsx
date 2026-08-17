@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image"
 import { 
   Users, 
   Receipt, 
@@ -32,7 +33,7 @@ const features = [
     icon: <Lightbulb size={20} />,
   },
   {
-    title: "Analytics em Tempo Real",
+    title: "Análises em Tempo Real",
     desc: "Gráficos e indicadores que mostram a saúde financeira da plataforma ao vivo.",
     icon: <BarChart3 size={20} />,
   },
@@ -47,16 +48,18 @@ export default function LandingPage() {
   return (
     <main className="landing-page">
       {/* 1. CABEÇALHO */}
-      <header className="landing-header">
-        <div className="landing-brand">
-          <div className="landing-brand-badge">E</div>
-          <span className="landing-brand-name">EduFinance</span>
-        </div>
-        <Link href="/login" className="landing-header-btn">
-          Entrar
-          <ArrowRight size={16} />
-        </Link>
-      </header>
+      <div className="auth-header">
+  <Image
+    src="/imagens/logo-simbolo.png" 
+    alt="Logo da EduFinance"
+    width={56}                       
+    height={56}                      
+    priority                         
+    className="auth-logo-img"
+  />
+  <h1 className="auth-brand">EduFinance</h1>
+  <p className="auth-subtitle">Painel Administrativo</p>
+</div>
 
       {/* 2. SEÇÃO HERO */}
       <section className="landing-hero">
@@ -121,13 +124,19 @@ export default function LandingPage() {
       </div>
 
       {/* 6. RODAPÉ */}
-      <footer className="landing-footer">
-        <div className="landing-brand">
-          <div className="landing-brand-badge">E</div>
-          <span className="landing-brand-name">EduFinance</span>
-        </div>
-        <span>Painel Administrativo · 2026</span>
-      </footer>
-    </main>
-  );
+     <footer className="landing-footer">
+  <div className="landing-brand">
+    <Image
+      src="/imagens/logo-simbolo.png" 
+      alt="Logo da EduFinance"
+      width={32}                       
+      height={32}
+      className="landing-footer-logo"
+    />
+    <span className="landing-brand-name">EduFinance</span>
+  </div>
+  <p>© 2026 EduFinance. Todos os direitos reservados.</p>
+	      </footer>
+	    </main>
+	  );
 }

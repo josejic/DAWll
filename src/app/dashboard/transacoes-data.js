@@ -15,17 +15,14 @@ const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "O
 
 export const movimentacoesMensais = meses.map((mes, indice) => {
   const transacoesDoMes = transacoes.filter((transacao) => {
-    const [, mesDaTransacao] = transacao.data.split("/");
-    return Number(mesDaTransacao) === indice + 1;
+const mesDaTransacao = Number(transacao.data.split("/")[2]);    
+return Number(mesDaTransacao) === indice + 1;
+
   });
 
   return {
     mes,
-    receitas: transacoesDoMes
-      .filter((transacao) => transacao.valor > 0)
-      .reduce((total, transacao) => total + transacao.valor, 0),
-    despesas: transacoesDoMes
-      .filter((transacao) => transacao.valor < 0)
-      .reduce((total, transacao) => total + Math.abs(transacao.valor), 0),
+    receitas: transacoesDoMes.filter((transacao) => transacao.valor > 0).reduce((total, transacao) => total + transacao.valor, 0),
+    despesas: transacoesDoMes.filter((transacao) => transacao.valor < 0).reduce((total, transacao) => total + Math.abs(transacao.valor), 0),
   };
 });

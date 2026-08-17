@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Redirecionamento direto, confiando na validação HTML5 dos inputs
+    // Redirecionamento direto, garantindo que a página não seja atualizada por completo, só por uma alteração
     router.push("/dashboard");
   };
 
