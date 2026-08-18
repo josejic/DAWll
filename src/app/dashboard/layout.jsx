@@ -26,9 +26,7 @@ const navItems = [
   { href: "/dashboard/configuracoes", label: "Configurações", Icon: Settings },
 ];
 
-function iniciais(nome) {
-  return (nome || "Administrador").split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();
-}
+function iniciais(nome) {return (nome || "Administrador").split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();}
 
 export default function AdminLayout({ children }) {
   return <AdminLayoutContent>{children}</AdminLayoutContent>;
