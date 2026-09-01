@@ -2,7 +2,7 @@
 
 import { Search, ChevronDown, ShieldCheck, User, Users, MoreHorizontal } from "lucide-react";
 
-const usuarios = [
+/*const usuarios = [
   {
     nome: "José Isac Cordeiro Rodrigues",
     email: "isac.cordeiro@academico.ifpb.edu.br",
@@ -25,6 +25,10 @@ const usuarios = [
     avatarCor: "c",
   },
 ];
+*/
+"use client";
+
+import { Search, ChevronDown, ShieldCheck, User, Users, MoreHorizontal } from "lucide-react";
 
 function iniciais(nome) {
   return nome
@@ -35,7 +39,15 @@ function iniciais(nome) {
     .toUpperCase();
 }
 
-export default function DashboardPage() {
+function formatarData(dataISO) {
+  return new Date(dataISO).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+export default function UsersTable({ usuarios }) {
   const totalAdmins = usuarios.filter((u) => u.tipo === "admin");
   const totalComuns = usuarios.filter((u) => u.tipo === "usuario");
 
@@ -45,61 +57,28 @@ export default function DashboardPage() {
       <p className="admin-page-subtitle">Gerencie todos os usuários da plataforma</p>
 
       <div className="admin-users-stats">
-        {/* TOTAL */}
         <div className="admin-users-stat-card">
           <div className="admin-users-stat-top">
             <Users size={13} />
             Total
           </div>
           <div className="admin-users-stat-value">{usuarios.length}</div>
-          <div className="admin-avatar-stack">
-            {usuarios.map((u) => (
-              <div
-                key={u.email}
-                className={"admin-mini-avatar admin-mini-avatar--" + u.avatarCor}
-              >
-                {iniciais(u.nome)}
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* ADMINISTRADORES */}
         <div className="admin-users-stat-card">
           <div className="admin-users-stat-top">
             <ShieldCheck size={13} />
             Administradores
           </div>
           <div className="admin-users-stat-value">{totalAdmins.length}</div>
-          <div className="admin-avatar-stack">
-            {totalAdmins.map((u) => (
-              <div
-                key={u.email}
-                className={"admin-mini-avatar admin-mini-avatar--" + u.avatarCor}
-              >
-                {iniciais(u.nome)}
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* USUÁRIOS COMUNS */}
         <div className="admin-users-stat-card">
           <div className="admin-users-stat-top">
             <User size={13} />
             Usuários
           </div>
           <div className="admin-users-stat-value">{totalComuns.length}</div>
-          <div className="admin-avatar-stack">
-            {totalComuns.map((u) => (
-              <div
-                key={u.email}
-                className={"admin-mini-avatar admin-mini-avatar--" + u.avatarCor}
-              >
-                {iniciais(u.nome)}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -130,11 +109,7 @@ export default function DashboardPage() {
               <tr key={u.email}>
                 <td>
                   <div className="admin-table-user">
-                    <div
-                      className={"admin-table-avatar admin-mini-avatar--" + u.avatarCor}
-                    >
-                      {iniciais(u.nome)}
-                    </div>
+                    <div className="admin-table-avatar">{iniciais(u.nome)}</div>
                     {u.nome}
                   </div>
                 </td>
@@ -150,7 +125,7 @@ export default function DashboardPage() {
                     {u.tipo === "admin" ? "Admin" : "Usuário"}
                   </span>
                 </td>
-                <td>{u.cadastro}</td>
+                <td>{formatarData(u.created_at)}</td>
                 <td>
                   <button className="admin-table-more" type="button" aria-label="Mais opções">
                     <MoreHorizontal size={16} />

@@ -232,31 +232,6 @@ export default function DicasPage() {
         ))}
       </div>
 
-      {/* IA apoiadora / orientadora */}
-      <div className={`dicas-ia-card ${iaApoiadoraAtiva ? "dicas-ia-card--on" : ""}`}>
-        <div className="dicas-ia-left">
-          <div className="dicas-ia-icon">
-            <Sparkles size={19} />
-          </div>
-          <div>
-            <div className="dicas-ia-title">
-              IA Apoiadora
-              <span className="dicas-ia-status">
-                {iaApoiadoraAtiva ? "Ativa" : "Inativa"}
-              </span>
-            </div>
-            <div className="dicas-ia-desc">
-              Quando ativa, orienta o usuário com sugestões personalizadas
-              enquanto ele lê as dicas.
-            </div>
-          </div>
-        </div>
-        <Switch
-          checked={iaApoiadoraAtiva}
-          onChange={setIaApoiadoraAtiva}
-          label="Ativar IA apoiadora"
-        />
-      </div>
 
       {/* Filtros por tipo */}
       <div className="dicas-tabs">
@@ -292,8 +267,8 @@ export default function DicasPage() {
             dica.dificuldade === "Baixa"
               ? "dica-tag--baixa"
               : dica.dificuldade === "Média"
-              ? "dica-tag--media"
-              : "dica-tag--alta";
+                ? "dica-tag--media"
+                : "dica-tag--alta";
 
           return (
             <div
