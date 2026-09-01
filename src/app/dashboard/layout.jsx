@@ -19,9 +19,6 @@ import {
 
 const navItems = [
   { href: "/dashboard", label: "Dados", Icon: LayoutGrid },
-  { href: "/dashboard/usuarios", label: "Usuários", Icon: Users },
-  { href: "/dashboard/transacoes", label: "Transações", Icon: ArrowRightLeft },
-  { href: "/dashboard/metas", label: "Metas", Icon: Target },
   { href: "/dashboard/dicas", label: "Dicas", Icon: Lightbulb },
   { href: "/dashboard/configuracoes", label: "Configurações", Icon: Settings },
 ];
