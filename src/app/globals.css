@@ -1,9 +1,9 @@
 :root {
   --primary: #55b28d;
   --primary-hover: #429b77;
-  --primary-dark: #388e73;
+  --primary-dark: #40987c;
   --primary-light: #e8f5f0;
-  --primary-subtle: #f0f7f4;
+  --primary-subtle: #518d73;
 
   /* Cores de Status e Ações */
   --color-success: #388e73;
@@ -13,21 +13,21 @@
   --color-info: #4f46e5;
   --bg-info: #eef2ff;
   --color-warning: #ca8a04;
-  --bg-warning: #fefce8;
+  --bg-warning: #8e8e8e;
   --color-quiz: #7c3aed;
   --bg-quiz: #f3ecfd;
 
   /* Cores Neutras (Textos e Fundos) */
   --bg-app: #f8faf9;
-  --bg-surface: #ffffff;
+  --bg-surface: #ececec;
   --text-main: #1a1a1a;
   --text-muted: #666666;
   --text-light: #888888;
   --text-placeholder: #94a3b8;
 
   /* Bordas e Divisores */
-  --border-color: #eef2f0;
-  --border-input: #e2e8f0;
+  --border-color: #cbcbcb;
+  --border-input: #b2c5dd;
   --border-active: #55b28d;
 
   /* Arredondamentos */
@@ -44,6 +44,31 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.01);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.02);
   --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.02);
+
+  /*Cor das dicas*/
+  --color-cat-1: #6366f1;
+  --bg-cat-1: #eef2ff;
+
+  --color-cat-2: #0ea5e9;
+  --bg-cat-2: #e0f2fe;
+
+  --color-cat-3: #10b981;
+  --bg-cat-3: #d1fae5;
+
+  --color-cat-4: #f59e0b;
+  --bg-cat-4: #fef3c7;
+
+  --color-cat-5: #ef4444;
+  --bg-cat-5: #fee2e2;
+
+  --color-cat-6: #8b5cf6;
+  --bg-cat-6: #ede9fe;
+
+  --color-cat-7: #ec4899;
+  --bg-cat-7: #fce7f3;
+
+  --color-cat-8: #14b8a6;
+  --bg-cat-8: #ccfbf1;
 }
 
 /* 2. RESET E NORMALIZE */

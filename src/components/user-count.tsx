@@ -1,6 +1,4 @@
 
-import usuarios from "../app/lib/supabase";
-
 export function createCliente() {
   const supabase = await Usuarios();
   const { count, error } = await supabase

@@ -6,9 +6,6 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   LayoutGrid,
-  Users,
-  ArrowRightLeft,
-  Target,
   Lightbulb,
   Settings,
   LogOut,
