@@ -17,7 +17,7 @@ import {
 const navItems = [
   { href: "/dashboard", label: "Dados", Icon: LayoutGrid },
   { href: "/dashboard/dicas", label: "Dicas", Icon: Lightbulb },
-  { href: "/dashboard/configuracoes", label: "Configurações", Icon: Settings },
+  { href: "/dashboard/interacao", label: "Interações", Icon: Settings },
 ];
 
 function iniciais(nome) {return (nome || "Administrador").split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();}

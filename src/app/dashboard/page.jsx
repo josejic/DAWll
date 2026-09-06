@@ -25,7 +25,7 @@ export default function TabelaDeUsuarios() {
 
   return (
     <>
-      <h1 className="admin-page-title">Usuários</h1>
+      <h1 className="admin-page-title">Usuários logados</h1>
       <div className="admin-users-stats">
         <div className="admin-users-stat-card">
           <div className="admin-users-stat-top">
