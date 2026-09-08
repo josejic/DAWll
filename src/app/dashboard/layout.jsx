@@ -7,17 +7,16 @@ import { usePathname } from "next/navigation";
 import {
   LayoutGrid,
   Lightbulb,
-  Settings,
   LogOut,
-  Bell,
   PanelLeftClose,
   PanelLeftOpen,
+  Users,
 } from "lucide-react";
 
 const navItems = [
   { href: "/dashboard", label: "Dados", Icon: LayoutGrid },
   { href: "/dashboard/dicas", label: "Dicas", Icon: Lightbulb },
-  { href: "/dashboard/interacao", label: "Interações", Icon: Settings },
+  { href: "/dashboard/interacao", label: "Interações", Icon: Users },
 ];
 
 function iniciais(nome) {return (nome || "Administrador").split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();}
@@ -89,7 +88,7 @@ function AdminLayoutContent({ children }) {
         <header className="admin-topbar">
           <div className="admin-topbar-right">
             <button type="button" className="admin-icon-btn" aria-label="Notificações">
-              <Bell size={19} />
+              
             </button>
             <div className="admin-user">
               <div className="admin-user-avatar">

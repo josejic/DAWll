@@ -716,6 +716,10 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.admin-page-subtitle--compact {
+  margin-bottom: 0;
+}
+
 .admin-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1228,6 +1232,15 @@ body {
   color: var(--bg-surface);
 }
 
+.dicas-tab-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background-color: var(--dica-accent, var(--primary));
+}
+
 .dicas-tabs-count {
   margin-left: auto;
   font-size: 0.8rem;
@@ -1250,6 +1263,54 @@ body {
   border-top: 4px solid var(--dica-accent, var(--primary));
   transition: box-shadow var(--transition-base), opacity var(--transition-base);
 }
+
+.dica-card--cor-1,
+.dicas-tab-dot--cor-1 {
+  --dica-accent: var(--color-cat-1);
+  --dica-accent-bg: var(--bg-cat-1);
+}
+
+.dica-card--cor-2,
+.dicas-tab-dot--cor-2 {
+  --dica-accent: var(--color-cat-2);
+  --dica-accent-bg: var(--bg-cat-2);
+}
+
+.dica-card--cor-3,
+.dicas-tab-dot--cor-3 {
+  --dica-accent: var(--color-cat-3);
+  --dica-accent-bg: var(--bg-cat-3);
+}
+
+.dica-card--cor-4,
+.dicas-tab-dot--cor-4 {
+  --dica-accent: var(--color-cat-4);
+  --dica-accent-bg: var(--bg-cat-4);
+}
+
+.dica-card--cor-5,
+.dicas-tab-dot--cor-5 {
+  --dica-accent: var(--color-cat-5);
+  --dica-accent-bg: var(--bg-cat-5);
+}
+
+.dica-card--cor-6,
+.dicas-tab-dot--cor-6 {
+  --dica-accent: var(--color-cat-6);
+  --dica-accent-bg: var(--bg-cat-6);
+}
+
+.dica-card--cor-7,
+.dicas-tab-dot--cor-7 {
+  --dica-accent: var(--color-cat-7);
+  --dica-accent-bg: var(--bg-cat-7);
+}
+
+.dica-card--cor-8,
+.dicas-tab-dot--cor-8 {
+  --dica-accent: var(--color-cat-8);
+  --dica-accent-bg: var(--bg-cat-8);
+}
 .dica-card--inativa {
   opacity: 0.55;
 }
@@ -1262,6 +1323,11 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 0.9rem;
+}
+
+.dica-card-meta {
+  display: flex;
+  align-items: flex-start;
 }
 
 .dica-icon {
@@ -1308,8 +1374,8 @@ body {
 }
 
 .dica-tag--categoria {
-  background-color: var(--bg-app);
-  color: var(--text-muted);
+  background-color: var(--dica-accent-bg, var(--primary-light));
+  color: var(--dica-accent, var(--primary-dark));
 }
 
 .dica-tag--baixa { background-color: var(--bg-success); color: var(--color-success); }
