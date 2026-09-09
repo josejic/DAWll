@@ -31,15 +31,7 @@ export default function LoginPage() {
           <p className="auth-brand">EduFinance</p>
           <p className="auth-subtitle">Painel Administrativo</p>
         </div>
-
-        {/* CARTÃO DE AUTENTICAÇÃO */}
         <div className="auth-card">
-          <button type="button" className="auth-google-btn">
-            <GoogleIcon size={18} />
-            Continuar com Google
-          </button>
-
-          <div className="auth-divider">ou</div>
 
           {/* FORMULÁRIO */}
           <form onSubmit={handleSubmit}>
