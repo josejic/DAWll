@@ -4,14 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LockKeyhole, Mail } from "lucide-react";
-import GoogleIcon from "../../components/GoogleIcon";
 
 export default function LoginPage() {
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     router.push("/dashboard");
   };
 
@@ -57,8 +56,8 @@ export default function LoginPage() {
                 <label className="bolso-label" htmlFor="senha">
                   Senha
                 </label>
-                <Link className="bolso-link bolso-link--sm" href="/recuperar-senha">
-                  Esqueceu a senha?
+                <Link href="/recuperar-senha" className="auth-forgot-link">
+                  Esqueceu sua senha?
                 </Link>
               </div>
               <div className="auth-input-wrap">
@@ -83,7 +82,7 @@ export default function LoginPage() {
         {/* RODAPÉ */}
         <p className="bolso-footnote">
           Ainda não tem conta?{" "}
-          <Link className="bolso-link" href="/cadastro">
+          <Link className="bolso-link" href="/criar-conta">
             Criar conta
           </Link>
         </p>

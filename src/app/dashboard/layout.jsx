@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
-  LayoutGrid,
   Lightbulb,
   LogOut,
   PanelLeftClose,
@@ -14,9 +13,8 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/dashboard", label: "Dados", Icon: LayoutGrid },
+  { href: "/dashboard", label: "Interações", Icon: Users },
   { href: "/dashboard/dicas", label: "Dicas", Icon: Lightbulb },
-  { href: "/dashboard/interacao", label: "Interações", Icon: Users },
 ];
 
 function iniciais(nome) {return (nome || "Administrador").split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();}

@@ -71,7 +71,6 @@
   --bg-cat-8: #ccfbf1;
 }
 
-/* 2. RESET E NORMALIZE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -85,7 +84,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 3. UTILITÁRIOS REUTILIZÁVEIS */
 .bolso-link {
   font-size: 0.8rem;
   color: var(--primary);
@@ -344,13 +342,25 @@ body {
   color: var(--text-light);
 }
 
-/* 5. TELA DE LOGIN (AUTH) */
+
 .bolso-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
+}
+
+.auth-forgot-link {
+  color: var(--primary-dark);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.auth-forgot-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 .auth-shell {
@@ -513,7 +523,6 @@ body {
   background-color: var(--primary-hover);
 }
 
-/* 6. DASHBOARD (LAYOUT & ESTRUTURA BASE) */
 .admin-layout {
   display: flex;
   min-height: 100vh;
@@ -703,7 +712,6 @@ body {
   flex: 1;
 }
 
-/* 7. DASHBOARD (PÁGINA DADOS / VISÃO GERAL) */
 .admin-page-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -799,7 +807,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* Elementos de Metas */
 .admin-goal-item {
   margin-bottom: 1rem;
 }
@@ -908,10 +915,9 @@ body {
 .admin-tx-value.pos { color: var(--color-success); }
 .admin-tx-value.neg { color: var(--color-danger); }
 
-/* 9. DASHBOARD (PÁGINA USUÁRIOS) */
 .admin-users-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
@@ -1076,7 +1082,6 @@ body {
   padding: 0.25rem;
 }
 
-/* 10. DASHBOARD (PÁGINA DICAS FINANCEIRAS) */
 .dicas-page-head {
   display: flex;
   align-items: flex-start;
@@ -1103,7 +1108,6 @@ body {
 .dicas-add-btn:hover { background-color: var(--primary-hover); }
 .dicas-add-btn:active { transform: scale(0.97); }
 
-/* Cartão da IA apoiadora */
 .dicas-ia-card {
   display: flex;
   align-items: center;
@@ -1172,8 +1176,6 @@ body {
   color: var(--text-muted);
   margin-top: 0.15rem;
 }
-
-/* Switch (toggle) reutilizável em toda a plataforma */
 .dicas-switch {
   position: relative;
   display: inline-flex;
@@ -1206,7 +1208,6 @@ body {
   transform: translateX(18px);
 }
 
-/* Filtros por tipo */
 .dicas-tabs {
   display: flex;
   align-items: center;
@@ -1247,7 +1248,6 @@ body {
   color: var(--text-light);
 }
 
-/* Grade de cartões de dica */
 .dicas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -1432,7 +1432,6 @@ body {
 }
 .dica-video-link:hover { text-decoration: underline; }
 
-/* Estado vazio */
 .dicas-empty {
   grid-column: 1 / -1;
   text-align: center;
@@ -1441,7 +1440,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Modal (adicionar / editar dica) */
 .dicas-modal-overlay {
   position: fixed;
   inset: 0;
@@ -1595,7 +1593,6 @@ body {
 .dicas-btn-primary:active,
 .dicas-btn-secondary:active { transform: scale(0.97); }
 
-/* Confirmação de exclusão */
 .dicas-confirm {
   max-width: 380px;
   text-align: left;
@@ -1629,8 +1626,177 @@ body {
 }
 .dicas-btn-danger:hover { background-color: #b91c1c; }
 .dicas-btn-danger:active { transform: scale(0.97); }
+/* Recuperação de senha */
 
-/* 11. MEDIA QUERIES (RESPONSIVIDADE) */
+.auth-message {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 0.75rem;
+}
+
+.auth-message--error {
+  color: var(--color-danger);
+  background-color: var(--bg-danger);
+}
+
+.auth-message--success {
+  color: var(--color-success);
+  background-color: var(--bg-success);
+}
+
+.auth-back-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: color var(--transition-base);
+}
+
+.auth-back-link:hover {
+  color: var(--primary-dark);
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-select {
+  cursor: pointer;
+}
+
+.auth-select option {
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+}
+
+/* CARD DE PERFIL - INTERAÇÕES */
+
+.perfil-card {
+  width: 100%;
+  max-width: 360px;
+
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+
+  padding: 1.25rem;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.perfil-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 1.25rem;
+}
+
+.perfil-card-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.perfil-card-header p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+
+  margin-top: 0.2rem;
+}
+
+.perfil-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 64px;
+
+  border: none;
+  border-radius: var(--radius-md);
+
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+
+  cursor: pointer;
+}
+
+.perfil-edit-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.perfil-card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.perfil-avatar {
+  width: 58px;
+  height: 58px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.perfil-camera-btn {
+  position: absolute;
+
+  right: -2px;
+  bottom: -2px;
+
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--bg-surface);
+  border-radius: 50%;
+
+  background-color: var(--primary);
+  color: white;
+
+  cursor: pointer;
+}
+
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.perfil-info strong {
+  font-size: 0.875rem;
+  color: var(--text-main);
+}
+
+.perfil-info span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 @media (max-width: 900px) {
   .admin-grid-2 {
     grid-template-columns: 1fr;
@@ -1663,4 +1829,80 @@ body {
   .dicas-field-row {
     grid-template-columns: 1fr;
   }
+  .painel-responder {
+    flex-direction: column;
+  }
+  .painel-responder .dicas-btn-primary {
+    width: 100%;
+  }
+}
+.painel-gestao {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.painel-secao {
+  margin-top: 1.5rem;
+}
+
+.painel-secao-titulo,
+.painel-responder,
+.painel-botao-excluir {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.painel-secao-titulo svg {
+  color: var(--primary);
+}
+
+.painel-titulo-dividido {
+  justify-content: space-between;
+}
+
+.painel-lista,
+.painel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.painel-lista {
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.painel-item {
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.painel-botao-excluir {
+  align-self: flex-end;
+  border: none;
+  background: none;
+  color: var(--color-danger);
+  cursor: pointer;
+}
+
+.painel-botao-salvar {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.painel-feedback {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.painel-responder .dicas-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.painel-resposta {
+  margin-top: 0.5rem;
 }

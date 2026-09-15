@@ -1,4 +1,4 @@
-import { Users } from "lucide-react";
+import PainelGestao from "./PainelGestao";
 import { supabaseAdmin } from "../lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
@@ -21,11 +21,11 @@ async function contarUsuarios() {
       );
     }
 
-    const quantidadeDaPagina = data.users.length;
+    const quantidadeDaPagina =
+      data.users.length;
 
     totalUsuarios += quantidadeDaPagina;
 
-    // Se vier menos de 1000, chegamos à última página.
     if (quantidadeDaPagina < porPagina) {
       break;
     }
@@ -36,27 +36,13 @@ async function contarUsuarios() {
   return totalUsuarios;
 }
 
-export default async function TabelaDeUsuarios() {
-  const totalUsuarios = await contarUsuarios();
+export default async function DashboardPage() {
+  const totalUsuarios =
+    await contarUsuarios();
 
   return (
-    <>
-      <h1 className="admin-page-title">
-        Contas Ativas
-      </h1>
-
-      <div className="admin-users-stats">
-        <div className="admin-users-stat-card">
-          <div className="admin-users-stat-top">
-            <Users size={13} />
-            Total
-          </div>
-
-          <div className="admin-users-stat-value">
-            {totalUsuarios}
-          </div>
-        </div>
-      </div>
-    </>
+    <PainelGestao
+      totalUsuarios={totalUsuarios}
+    />
   );
 }
