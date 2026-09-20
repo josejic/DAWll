@@ -1683,7 +1683,6 @@ body {
 
 .perfil-card {
   width: 100%;
-  max-width: 360px;
 
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -1796,7 +1795,100 @@ body {
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+/* SOLICITAÇÕES DE ADMINISTRADORES */
 
+.admin-request-box {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.admin-request-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.admin-request-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.admin-request-info strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.admin-request-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  margin-top: 0.4rem;
+
+  border-radius: var(--radius-pill);
+
+  background-color: var(--bg-warning);
+  color: var(--color-warning);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.admin-request-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.admin-request-approve,
+.admin-request-deny {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0.65rem 1.1rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.admin-request-approve {
+  background-color: var(--primary);
+  color: var(--bg-surface);
+}
+
+.admin-request-approve:hover {
+  background-color: var(--primary-hover);
+}
+
+.admin-request-deny {
+  background-color: var(--bg-danger);
+  color: var(--color-danger);
+}
+
+.admin-request-deny:hover {
+  background-color: var(--color-danger);
+  color: var(--bg-surface);
+}
+
+.admin-request-approve:active,
+.admin-request-deny:active {
+  transform: scale(0.97);
+}
 @media (max-width: 900px) {
   .admin-grid-2 {
     grid-template-columns: 1fr;
