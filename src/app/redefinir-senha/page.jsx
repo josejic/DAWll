@@ -80,7 +80,6 @@ export default function RedefinirSenhaPage() {
 
                     <form onSubmit={redefinirSenha}>
 
-                        {/* NOVA SENHA */}
                         <div className="auth-field">
 
                             <div className="auth-label-row">
@@ -107,7 +106,6 @@ export default function RedefinirSenhaPage() {
 
                         </div>
 
-                        {/* CONFIRMAR SENHA */}
                         <div className="auth-field">
 
                             <div className="auth-label-row">
@@ -134,14 +132,12 @@ export default function RedefinirSenhaPage() {
 
                         </div>
 
-                        {/* ERRO */}
                         {erro && (
                             <p className="auth-message auth-message--error">
                                 {erro}
                             </p>
                         )}
 
-                        {/* SUCESSO */}
                         {mensagem && (
                             <p className="auth-message auth-message--success">
                                 {mensagem}

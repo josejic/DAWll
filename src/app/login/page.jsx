@@ -67,7 +67,7 @@ export default function LoginPage() {
     }
 
     router.push("/dashboard");
-    router.refresh();
+    router.refresh();//pede pro next atualizar os dados atuais do servidor sem recarregar a página toda
   };
 
   return (

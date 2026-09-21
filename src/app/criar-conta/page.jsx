@@ -25,16 +25,14 @@ export default function CriarContaPage() {
     async function criarConta(event) {
         event.preventDefault();
 
-        setErro("");
+        setErro("");//atualiza o valor enquanto a pessoa digita
         setMensagem("");
 
-        // CONFERE SE AS SENHAS SÃO IGUAIS
         if (senha !== confirmarSenha) {
             setErro("As senhas não coincidem.");
             return;
         }
 
-        // CONFERE O TAMANHO DA SENHA
         if (senha.length < 6) {
             setErro("A senha deve possuir pelo menos 6 caracteres.");
             return;
@@ -42,7 +40,6 @@ export default function CriarContaPage() {
 
         setCarregando(true);
 
-        // CRIA A CONTA NO SUPABASE AUTH
         const { data, error } = await supabase.auth.signUp({
             email: email.trim(),
             password: senha,
@@ -54,7 +51,6 @@ export default function CriarContaPage() {
             return;
         }
 
-        // PEGA O ID DO USUÁRIO CRIADO
         const userId = data.user?.id;
 
         if (!userId) {
@@ -63,10 +59,7 @@ export default function CriarContaPage() {
             return;
         }
 
-        // CADASTRA O ADMINISTRADOR COMO PENDENTE
-        const { error: erroAdmin } = await supabase
-            .from("administradores")
-            .insert({
+        const { error: erroAdmin } = await supabase.from("administradores").insert({
                 id: userId,
                 nome: nome.trim(),
                 status: "pendente",

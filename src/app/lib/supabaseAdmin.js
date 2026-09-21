@@ -6,9 +6,9 @@ export const supabaseAdmin = createClient(
   process.env.SUPABASE_SECRET_KEY,
   {
     auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-      detectSessionInUrl: false,
+      autoRefreshToken: false,//não renova o token
+      persistSession: false,//não persiste na seção
+      detectSessionInUrl: false,//não dectar seção por url
     },
   }
 );

@@ -25,13 +25,11 @@ const DICA_VAZIA = {
 const CAMPOS_DICA =
   "id, titulo, categoria, descricao, conteudo, created_at";
 
-
-// Gera sempre a mesma cor para a mesma categoria
 function getCorCategoria(categoria = "") {
   let valor = 0;
 
   for (const letra of categoria) {
-    valor += letra.charCodeAt(0);
+    valor += letra.charCodeAt(0);//transforma uma letra em numero e garante que a mesma categoria tenha sempre a mesma cor
   }
 
   return (valor % TOTAL_CORES) + 1;
@@ -274,10 +272,7 @@ export default function DicasPage() {
     let ativo = true;
 
     async function buscarDicas() {
-      const { data, error } = await supabase
-        .from("dicas")
-        .select(CAMPOS_DICA)
-        .order("created_at", {
+      const { data, error } = await supabase.from("dicas").select(CAMPOS_DICA).order("created_at", {
           ascending: false,
         });
 
@@ -303,9 +298,7 @@ export default function DicasPage() {
 
   const categorias = [
     ...new Set(
-      dicas
-        .map((dica) => dica.categoria)
-        .filter(Boolean)
+      dicas.map((dica) => dica.categoria).filter(Boolean)
     ),
   ];
 
@@ -332,11 +325,7 @@ export default function DicasPage() {
 
     if (mode === "novo") {
 
-      const { data, error } = await supabase
-        .from("dicas")
-        .insert(dadosDica)
-        .select(CAMPOS_DICA)
-        .single();
+      const { data, error } = await supabase.from("dicas").insert(dadosDica).select(CAMPOS_DICA).single();
 
 
       if (error) {
@@ -354,12 +343,7 @@ export default function DicasPage() {
 
     } else {
 
-      const { data, error } = await supabase
-        .from("dicas")
-        .update(dadosDica)
-        .eq("id", id)
-        .select(CAMPOS_DICA)
-        .single();
+      const { data, error } = await supabase.from("dicas").update(dadosDica).eq("id", id).select(CAMPOS_DICA).single();
 
 
       if (error) {
@@ -389,12 +373,7 @@ export default function DicasPage() {
     setErro("");
 
 
-    const { data, error } = await supabase
-      .from("dicas")
-      .delete()
-      .eq("id", id)
-      .select("id")
-      .single();
+    const { data, error } = await supabase.from("dicas").delete().eq("id", id).select("id").single();
 
 
     if (error) {
