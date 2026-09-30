@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  Mail,
-  Phone,
-  HelpCircle,
   MessageSquare,
-  Plus,
-  Trash2,
   Save,
   Send,
   UserRound,
@@ -16,19 +11,6 @@ import {
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
-const FAQS_INICIAIS = [
-  {
-    id: 1,
-    pergunta: "Como adicionar uma receita?",
-    resposta: "Vá em Transações e clique em +.",
-  },
-  {
-    id: 2,
-    pergunta: "Meus dados estão seguros?",
-    resposta: "Sim, utilizamos criptografia.",
-  },
-];
-
 export default function PainelGestao() {
 
   const [solicitacoes, setSolicitacoes] = useState([]);
@@ -36,63 +18,7 @@ export default function PainelGestao() {
   const [fotoPerfil, setFotoPerfil] = useState("");
   const [enviandoFoto, setEnviandoFoto] = useState(false);
   const [editandoPerfil, setEditandoPerfil] = useState(false);
-  const [emailSuporte, setEmailSuporte] = useState(
-    "suporte@edufinance.com"
-  );
-
-  const [whatsappSuporte, setWhatsappSuporte] = useState(
-    "(83) 90000-0000"
-  );
-
-  const [termosUso, setTermosUso] = useState(
-    "Bem-vindo ao EduFinance..."
-  );
-
-
-  const [faqs, setFaqs] = useState(FAQS_INICIAIS);
-
   const [feedbacks, setFeedbacks] = useState([]);
-
-
-
-  function adicionarFaq() {
-    const novaFaq = {
-      id: Date.now(),
-      pergunta: "Nova pergunta",
-      resposta: "",
-    };
-
-    setFaqs((listaAtual) => [
-      ...listaAtual,
-      novaFaq,
-    ]);
-  }
-
-
-  function removerFaq(id) {
-    setFaqs((listaAtual) =>
-      listaAtual.filter((faq) => faq.id !== id)
-    );
-  }
-
-
-  function atualizarFaq(id, campo, valor) {
-    setFaqs((listaAtual) =>
-      listaAtual.map((faq) => {
-
-        if (faq.id === id) {
-          return {
-            ...faq,
-            [campo]: valor,
-          };
-        }
-
-        return faq;
-      })
-    );
-  }
-
-
 
   function atualizarRascunho(id, texto) {
     setFeedbacks((listaAtual) =>
@@ -145,14 +71,22 @@ export default function PainelGestao() {
 
 
   async function buscarFeedbacks() {
-    const { data, error } = await supabase.from("feedback").select("mensagem, categoria");
+   const { data, error } = await supabase
+    .from("feedback")
+    .select("id, usuario_id, mensagem, categoria, criada_em")
+    .order("criada_em", { ascending: false });
 
-    if (error) {
-      console.error("Erro ao buscar feedbacks:", error);
-      return;
-    }
+  if (error) {
+    console.error("Erro ao buscar feedbacks:", error);
+    return;
+  }
 
-    setFeedbacks(data);
+  setFeedbacks(
+    (data ?? []).map((feedback) => ({
+      ...feedback,
+      rascunho: "",
+    }))
+  );
   }
 
 
@@ -450,181 +384,6 @@ export default function PainelGestao() {
           </section>
         ))
       )}
-
-
-      {/*SUPORTE E TERMOS*/}
-
-      <section className="admin-card painel-secao">
-
-        <div className="painel-secao-titulo">
-
-          <HelpCircle size={20} />
-
-          <h2 className="admin-card-title">
-            Suporte e Termos
-          </h2>
-
-        </div>
-
-
-        {/* CONTATOS */}
-
-        <div className="dicas-field">
-
-          <label className="bolso-label">
-            Canais de contato
-          </label>
-
-
-          <div className="auth-input-wrap">
-
-            <Mail size={16} />
-
-            <input
-              className="auth-input"
-              value={emailSuporte}
-              onChange={(event) =>
-                setEmailSuporte(event.target.value)
-              }
-            />
-
-          </div>
-
-
-          <div className="auth-input-wrap">
-
-            <Phone size={16} />
-
-            <input
-              className="auth-input"
-              value={whatsappSuporte}
-              onChange={(event) =>
-                setWhatsappSuporte(
-                  event.target.value
-                )
-              }
-            />
-
-          </div>
-
-        </div>
-
-
-        {/* TERMOS */}
-
-        <div className="dicas-field">
-
-          <label className="bolso-label">
-            Termos de uso
-          </label>
-
-          <textarea
-            className="dicas-textarea"
-            value={termosUso}
-            onChange={(event) =>
-              setTermosUso(event.target.value)
-            }
-          />
-
-        </div>
-
-
-        <button
-          type="button"
-          className="dicas-btn-primary painel-botao-salvar"
-          onClick={salvarDados}
-        >
-          <Save size={16} />
-          Salvar suporte
-        </button>
-
-      </section>
-
-
-      {/*PERGUNTAS FREQUENTES*/}
-
-      <section className="admin-card painel-secao">
-
-        <div className="painel-secao-titulo painel-titulo-dividido">
-
-          <div className="painel-secao-titulo">
-
-            <HelpCircle size={20} />
-
-            <h2 className="admin-card-title">
-              Perguntas frequentes
-            </h2>
-
-          </div>
-
-
-          <button
-            type="button"
-            className="dica-action-btn"
-            onClick={adicionarFaq}
-            aria-label="Adicionar pergunta"
-          >
-            <Plus size={16} />
-          </button>
-
-        </div>
-
-
-        <div className="painel-lista">
-
-          {faqs.map((faq) => (
-
-            <div
-              className="painel-item"
-              key={faq.id}
-            >
-
-              <input
-                className="dicas-input"
-                value={faq.pergunta}
-                placeholder="Pergunta"
-                onChange={(event) =>
-                  atualizarFaq(
-                    faq.id,
-                    "pergunta",
-                    event.target.value
-                  )
-                }
-              />
-
-
-              <textarea
-                className="dicas-textarea"
-                value={faq.resposta}
-                placeholder="Resposta"
-                onChange={(event) =>
-                  atualizarFaq(
-                    faq.id,
-                    "resposta",
-                    event.target.value
-                  )
-                }
-              />
-
-
-              <button
-                type="button"
-                className="painel-botao-excluir"
-                onClick={() =>
-                  removerFaq(faq.id)
-                }
-              >
-                <Trash2 size={14} />
-                Excluir
-              </button>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </section>
 
 
       {/* FEEDBACKS*/}
