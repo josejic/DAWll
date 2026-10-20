@@ -71,10 +71,7 @@ export default function PainelGestao() {
 
 
   async function buscarFeedbacks() {
-   const { data, error } = await supabase
-    .from("feedback")
-    .select("id, usuario_id, mensagem, categoria, criada_em")
-    .order("criada_em", { ascending: false });
+   const { data, error } = await supabase.from("feedback").select("id, usuario_id, mensagem, categoria, criada_em, resposta").order("criada_em", { ascending: false });
 
   if (error) {
     console.error("Erro ao buscar feedbacks:", error);
